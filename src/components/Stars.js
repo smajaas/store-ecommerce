@@ -2,66 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
 const Stars = ({ stars, reviews }) => {
-  console.log(stars);
+  const tempStars = Array.from({ length: 5 }, (_, index) => {
+    //index 0-4
+    const number = index + 0.5;
+    return (
+      <span key={index}>
+        {stars >= index + 1 ? (
+          <BsStarFill />
+        ) : stars >= number ? (
+          <BsStarHalf />
+        ) : (
+          <BsStar />
+        )}
+      </span>
+    );
+  });
+  console.log(tempStars);
+
   return (
     <Wrapper>
-      <div className='stars'>
-        {/* 1st star */}
-        <span>
-          {stars >= 1 ? (
-            <BsStarFill />
-          ) : stars >= 0.5 ? (
-            <BsStarHalf />
-          ) : (
-            <BsStar />
-          )}
-        </span>
-        {/* end of 1st star */}
-        {/* star 2 */}
-        <span>
-          {stars >= 2 ? (
-            <BsStarFill />
-          ) : stars >= 1.5 ? (
-            <BsStarHalf />
-          ) : (
-            <BsStar />
-          )}
-        </span>
-        {/* end of 2nd star */}
-        {/* 3rd star */}
-        <span>
-          {stars >= 3 ? (
-            <BsStarFill />
-          ) : stars >= 2.5 ? (
-            <BsStarHalf />
-          ) : (
-            <BsStar />
-          )}
-        </span>
-        {/* end of 3rd  star */}
-        {/* 4th star */}
-        <span>
-          {stars >= 4 ? (
-            <BsStarFill />
-          ) : stars >= 3.5 ? (
-            <BsStarHalf />
-          ) : (
-            <BsStar />
-          )}
-        </span>
-        {/* end of 4th  star */}
-        {/* 5th star */}
-        <span>
-          {stars === 5 ? (
-            <BsStarFill />
-          ) : stars >= 4.5 ? (
-            <BsStarHalf />
-          ) : (
-            <BsStar />
-          )}
-        </span>
-        {/* end of 5th  star */}
-      </div>
+      <div className='stars'>{tempStars}</div>
       <p className='reviews'>({reviews}) customer reviews</p>
     </Wrapper>
   );
