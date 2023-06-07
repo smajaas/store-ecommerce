@@ -24,7 +24,6 @@ const Filters = () => {
   const categories = getUniqueValues(all_products, 'category');
   const companies = getUniqueValues(all_products, 'company');
   const colors = getUniqueValues(all_products, 'colors');
-  console.log(colors);
 
   return (
     <Wrapper>
@@ -91,6 +90,7 @@ const Filters = () => {
                 if (c === 'all') {
                   return (
                     <button
+                      key={index}
                       name='color'
                       onClick={updateFilters}
                       data-color='all'
@@ -120,6 +120,20 @@ const Filters = () => {
             </div>
           </div>
           {/* end of colors */}
+          {/* price */}
+          <div className='form-control'>
+            <h5>price</h5>
+            <p className='price'>{formatPrice(price)}</p>
+            <input
+              type='range'
+              name='price'
+              onChange={updateFilters}
+              min={min_price}
+              max={max_price}
+              value={price}
+            />
+          </div>
+          {/* end of price */}
         </form>
       </div>
     </Wrapper>
