@@ -18,7 +18,7 @@ const Sort = () => {
         <button
           type='button'
           className={`${grid_view ? 'active' : null}`}
-          onChange={setGridView}
+          onClick={setGridView}
         >
           <BsFillGridFill />
         </button>
