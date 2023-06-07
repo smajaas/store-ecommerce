@@ -88,6 +88,17 @@ const filter_reducer = (state, action) => {
       );
     }
 
+    //colors
+    if (color !== 'all') {
+      tempProducts = tempProducts.filter((product) => {
+        return product.colors.find((c) => c === color);
+      });
+    }
+
+    //price
+
+    //shipping
+
     return { ...state, filtered_products: tempProducts };
   }
 
