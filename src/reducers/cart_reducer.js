@@ -11,6 +11,7 @@ const cart_reducer = (state, action) => {
     const { id, color, amount, product } = action.payload;
     const tempItem = state.cart.find((i) => i.id === id + color);
     if (tempItem) {
+      // eslint-disable-next-line
       const tempCart = state.cart.map((cartItem) => {
         if (cartItem.id === id + color) {
           let newAmount = cartItem.amount + amount;
@@ -38,6 +39,7 @@ const cart_reducer = (state, action) => {
 
   if (action.type === REMOVE_CART_ITEM) {
     const tempCart = state.cart.filter((item) => item.id !== action.payload);
+
     return { ...state, cart: tempCart };
   }
 
@@ -62,9 +64,8 @@ const cart_reducer = (state, action) => {
           }
           return { ...item, amount: newAmount };
         }
-      } else {
-        return item;
       }
+      return item;
     });
     return { ...state, cart: tempCart };
   }
